@@ -15,7 +15,7 @@ function AppContent() {
   const getAuth = () => {
     return {
       isAuthenticated: !!localStorage.getItem('access'),
-      isStaff: localStorage.getItem('is_staff') === 'true' || localStorage.getItem('is_staff') === true
+      isStaff: localStorage.getItem('is_staff') === 'true'
     };
   };
 

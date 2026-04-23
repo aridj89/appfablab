@@ -1,7 +1,8 @@
+import type { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 
 interface ProtectedRouteProps {
-    children: JSX.Element;
+    children: ReactNode;
     adminOnly?: boolean;
 }
 
@@ -17,7 +18,7 @@ const ProtectedRoute = ({ children, adminOnly = false }: ProtectedRouteProps) =>
         return <Navigate to="/labo" replace />;
     }
 
-    return children;
+    return <>{children}</>;
 };
 
 export default ProtectedRoute;
