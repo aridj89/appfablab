@@ -1,0 +1,25 @@
+# Backend
+backend/venv/
+backend/__pycache__/
+backend/api/__pycache__/
+backend/api/migrations/__pycache__/
+backend/core/__pycache__/
+backend/db.sqlite3
+backend/media/
+*.pyc
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+*.env.local

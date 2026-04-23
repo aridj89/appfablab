@@ -1,0 +1,162 @@
+.sidebar {
+    width: 16.25rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px);
+    border-right: 1px solid var(--glass-border);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 1.25rem 1.875rem 1.25rem; /* More top padding for burger */
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sidebar.collapsed {
+    width: 5rem;
+    padding: 80px 15px 30px 15px;
+}
+
+.burger-btn {
+    position: fixed;
+    top: 1.5625rem;
+    left: 1.5625rem;
+    z-index: 2000;
+    background: transparent;
+    border: none;
+    width: 2rem;
+    height: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Burger Animation */
+.burger-btn:not(.collapsed) .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+    background-color: var(--primary);
+}
+
+.burger-btn:not(.collapsed) .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-btn:not(.collapsed) .bar:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+    background-color: var(--primary);
+}
+
+/* Hover effects */
+.burger-btn:hover .bar {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(245, 128, 37, 0.8);
+}
+
+.sidebar-brand {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-color);
+    margin-bottom: 2.5rem;
+    letter-spacing: 1px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.sidebar-brand span {
+    color: var(--primary);
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.sidebar-nav a {
+    color: var(--subtitle-color);
+    text-decoration: none;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.sidebar.collapsed .sidebar-nav a {
+    padding: 14px;
+    justify-content: center;
+}
+
+.sidebar-nav a:hover {
+    background: rgba(245, 128, 37, 0.05); /* Light orange background on hover */
+    color: var(--primary);
+    transform: translateX(5px);
+}
+
+.sidebar.collapsed .sidebar-nav a:hover {
+    transform: scale(1.1);
+}
+
+.sidebar-nav a.active {
+    background: linear-gradient(135deg, var(--primary), #fbbf24); /* Orange to Amber gradient */
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(245, 128, 37, 0.4);
+}
+
+.sidebar-footer {
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logout-btn {
+    width: 100%;
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.sidebar.collapsed .logout-btn {
+    padding: 12px 0;
+}
+
+.logout-btn:hover {
+    background: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
+}
+
+/* Adjust main container dynamically */
+@media (min-width: 48rem) {
+    .container {
+        margin-left: 16.25rem;
+        width: calc(100% - 16.25rem) !important;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+}
+
+.sidebar.collapsed ~ .container {
+    margin-left: 5rem;
+    width: calc(100% - 5rem) !important;
+}
